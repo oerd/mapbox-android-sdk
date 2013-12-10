@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 	private MapView mv;
 	private MyLocationNewOverlay myLocationOverlay;
     private Paint paint;
-    private final String mapURL = "http://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/";
+    private final String mapURL = "examples.map-9ijuk24y";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class MainActivity extends Activity {
 		
 		return true;
 	}
+
 
 
 }

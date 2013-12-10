@@ -72,6 +72,9 @@ public class MapView extends org.osmdroid.views.MapView implements MapEventsRece
 
     public void setURL(String URL){
         if(!URL.equals("")) {
+            if(!URL.contains("http://")){
+                URL = getURLFromMapBoxID(URL);
+            }
             tileSource = new XYTileSource(getApplicationName(), ResourceProxy.string.online_mode, 0, 24, dpToPx(256), ".png", URL);
             this.setTileSource(tileSource);
         }
