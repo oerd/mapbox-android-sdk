@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.DefaultResourceProxyImpl;
@@ -135,10 +136,15 @@ public class MapView extends org.osmdroid.views.MapView implements MapEventsRece
         this.getOverlays().add(itemizedOverlay);
     }
 
+    public void addMarkersFromGeoJSON(String URL) {
+        MarkerFactory mf = new MarkerFactory();
+        mf.fromGeoJSON(URL);
+    }
+
     public class MarkerFactory {
-        public ItemizedOverlay<Marker> fromGeoJSON(String URL){
-            GeoJSONElement geoJSONElement = new GeoJSONElement(URL);
-            return geoJSONElement.getMarkersOverlay();
+        @TargetApi(Build.VERSION_CODES.CUPCAKE)
+        public void fromGeoJSON(String URL){
+            new JSONBodyGetter().execute(URL);
         }
         @TargetApi(Build.VERSION_CODES.CUPCAKE)
         private class JSONBodyGetter extends AsyncTask<String, Void, JSONObject> {
@@ -167,6 +173,14 @@ public class MapView extends org.osmdroid.views.MapView implements MapEventsRece
 
             @Override
             protected void onPostExecute(JSONObject jsonObject) {
+                try {
+                    JSONArray featureCollection = jsonObject.getJSONArray("features");
+                    for(int i=0; i<featureCollection.length(); i++){
+
+                    }
+                } catch (JSONException e) {
+                    System.out.println("JSON exception");
+                }
 
             }
         }

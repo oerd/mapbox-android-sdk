@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 	private MyLocationNewOverlay myLocationOverlay;
     private Paint paint;
     private final String mapURL = "examples.map-9ijuk24y";
+    private final String geoJSONURL = "https://gist.github.com/anonymous/b1ac416846e061849718/raw/46959a6eae69f2c0b26ed064448dd1f9325b41fb/map.geojson";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class MainActivity extends Activity {
 
         // Configures a marker
         mv.addMarker(52.5, 0f, "Hello", "Marker test");
+
+        mv.addMarkersFromGeoJSON(geoJSONURL);
 
     }
     private void addLocationOverlay(){

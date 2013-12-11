@@ -10,8 +10,11 @@ buildscript {
 
 apply plugin: 'android'
 
+dependencies {
+    compile files('src/main/java/org/osmdroid/slf4j-api-1.7.5.jar')
+}
+
 android {
     buildToolsVersion "19"
     compileSdkVersion 17
 }
-

@@ -1,7 +1,13 @@
 package org.osmdroid.views.overlay.mylocation;
 
-import java.util.LinkedList;
-
+import android.content.Context;
+import android.graphics.*;
+import android.graphics.Paint.Style;
+import android.location.Location;
+import android.util.FloatMath;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
@@ -19,18 +25,7 @@ import org.osmdroid.views.util.constants.MapViewConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.Paint.Style;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.location.Location;
-import android.util.FloatMath;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
+import java.util.LinkedList;
 
 /**
  * @author Marc Kurtz
